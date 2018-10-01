@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Football Match Schedule</string>
+    <string name="title_prev_match">Prev Match</string>
+    <string name="title_next_match">Next Match</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="favorites">Favorites</string>
+    <string name="img">img</string>
+    <string name="dash">-</string>
+    <string name="versus">VS</string>
+    <string name="goals">Goals</string>
+    <string name="shots">Shots</string>
+    <string name="lineups">Lineups</string>
+    <string name="goal_keeper">Goal Keeper</string>
+    <string name="defense">Defense</string>
+    <string name="midfield">Midfield</string>
+    <string name="forward">Forward</string>
+    <string name="substitutes">Substitutes</string>
+</resources>
