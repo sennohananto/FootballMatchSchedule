@@ -33,7 +33,7 @@ class NextMatchFragment : Fragment(),NextMatchView {
         progressBar.invisible()
     }
 
-    override fun showTeamList(data: List<Event>?) {
+    override fun showNextMatchList(data: List<Event>?) {
         adapter = MatchAdapter(data!!) {
             startActivity<DetailMatchActivity>(
                     "idEvent" to it.idEvent

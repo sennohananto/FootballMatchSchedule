@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "872151103906",
+    "firebase_url": "https://football-match-schedule-8e01c.firebaseio.com",
+    "project_id": "football-match-schedule-8e01c",
+    "storage_bucket": "football-match-schedule-8e01c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872151103906:android:d3713780dbd8dcae",
+        "android_client_info": {
+          "package_name": "com.sennohananto.footballmatchschedule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872151103906-gtf8mqca9v2q923of9ps5vkmlniul84b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sennohananto.footballmatchschedule",
+            "certificate_hash": "f684a6cd75974f075d0a8e7935a3e5b912f2dbbd"
+          }
+        },
+        {
+          "client_id": "872151103906-qf0v9q93pav8r317npudhadjj36l4lb8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwew2JO7_UhU_Sn3i5EhBow8TesFXHiOk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "872151103906-qf0v9q93pav8r317npudhadjj36l4lb8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

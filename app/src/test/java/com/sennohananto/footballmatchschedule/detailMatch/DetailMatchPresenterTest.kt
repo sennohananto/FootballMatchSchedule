@@ -1,10 +1,10 @@
-package com.sennohananto.footballmatchschedule.prevMatch
+package com.sennohananto.footballmatchschedule.detailMatch
 
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
-import com.androidnetworking.interfaces.ParsedRequestListener
-import com.sennohananto.footballmatchschedule.model.Match
+import com.androidnetworking.interfaces.JSONObjectRequestListener
+import org.json.JSONObject
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -12,37 +12,34 @@ import org.mockito.Mock
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 
-class PrevMatchPresenterTest {
-
-
+class DetailMatchPresenterTest {
 
     @Mock
     private
-    lateinit var view: PrevMatchView
+    lateinit var view: DetailMatchView
 
     @Mock
-    lateinit var presenterTest: PrevMatchPresenter
+    lateinit var presenter: DetailMatchPresenter
 
     @Before
     fun setUp(){
         MockitoAnnotations.initMocks(this)
-        presenterTest = PrevMatchPresenter(view)
+        presenter = DetailMatchPresenter(view)
     }
 
     @Test
-    fun getTeamList() {
+    fun getTeamDetail() {
         view.showLoading()
         verify(view).showLoading()
-        AndroidNetworking.get("https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=4328")
+        AndroidNetworking.get("https://www.thesportsdb.com/api/v1/json/1/lookupteam.php")
+                .addQueryParameter("id","134301")
                 .setPriority(Priority.HIGH)
                 .build()
-                .getAsObject(Match::class.java, object : ParsedRequestListener<Match> {
-                    override fun onResponse(response: Match?) {
-                        view.showPrevMatchList(response?.events)
-                        verify(view).showPrevMatchList(response?.events)
+                .getAsJSONObject(object : JSONObjectRequestListener {
+                    override fun onResponse(response: JSONObject?) {
+                        Assert.assertEquals(1, response?.getJSONArray("teams")?.length())
                         view.hideLoading()
                         verify(view).hideLoading()
-                        Assert.assertEquals(response!!::class.java,Match::class.java)
                     }
 
                     override fun onError(anError: ANError?) {

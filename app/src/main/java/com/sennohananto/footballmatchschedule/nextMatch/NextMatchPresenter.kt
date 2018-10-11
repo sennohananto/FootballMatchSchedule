@@ -14,7 +14,7 @@ class NextMatchPresenter(private val view: NextMatchView){
                 .build()
                 .getAsObject(Match::class.java, object : ParsedRequestListener<Match> {
                     override fun onResponse(response: Match?) {
-                        view.showTeamList(response?.events)
+                        view.showNextMatchList(response?.events)
                         view.hideLoading()
                     }
 

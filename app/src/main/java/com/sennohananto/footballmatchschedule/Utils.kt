@@ -15,6 +15,7 @@ fun View.invisible() {
 fun toDateIndo(date:String, pattern:String): String? {
     val localindo = Locale("in","ID","ID")
     val inputFormat = SimpleDateFormat(pattern, localindo)
-    val outputFormat = SimpleDateFormat("E, dd MMM YYYY", localindo)
+    val outputFormat = SimpleDateFormat("E, dd MMM yyyy", localindo)
+
     return outputFormat.format(inputFormat.parse(date))
 }

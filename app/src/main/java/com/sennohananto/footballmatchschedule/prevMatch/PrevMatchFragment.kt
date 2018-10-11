@@ -44,7 +44,7 @@ class PrevMatchFragment : Fragment(), PrevMatchView {
 
     }
 
-    override fun showTeamList(data: List<Event>?) {
+    override fun showPrevMatchList(data: List<Event>?) {
         adapter = MatchAdapter(data!!) {
             startActivity<DetailMatchActivity>(
                     "idEvent" to it.idEvent

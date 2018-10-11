@@ -5,5 +5,5 @@ import com.sennohananto.footballmatchschedule.model.Event
 interface PrevMatchView {
     fun showLoading()
     fun hideLoading()
-    fun showTeamList(data: List<Event>?)
+    fun showPrevMatchList(data: List<Event>?)
 }
