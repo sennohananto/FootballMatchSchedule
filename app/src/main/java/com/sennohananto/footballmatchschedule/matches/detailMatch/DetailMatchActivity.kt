@@ -12,18 +12,15 @@ import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
 import com.bumptech.glide.Glide
-import com.sennohananto.footballmatchschedule.R
+import com.sennohananto.footballmatchschedule.*
 import com.sennohananto.footballmatchschedule.R.drawable.ic_add_to_favorites
 import com.sennohananto.footballmatchschedule.R.drawable.ic_added_to_favorites
 import com.sennohananto.footballmatchschedule.R.id.add_to_favorite
 import com.sennohananto.footballmatchschedule.R.menu.detail_menu
-import com.sennohananto.footballmatchschedule.database.Favorite
+import com.sennohananto.footballmatchschedule.database.FavoriteMatch
 import com.sennohananto.footballmatchschedule.database.database
-import com.sennohananto.footballmatchschedule.invisible
 import com.sennohananto.footballmatchschedule.model.Event
 import com.sennohananto.footballmatchschedule.model.Match
-import com.sennohananto.footballmatchschedule.toDateIndo
-import com.sennohananto.footballmatchschedule.visible
 import kotlinx.android.synthetic.main.activity_detail_match.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete
@@ -48,6 +45,7 @@ class DetailMatchActivity : AppCompatActivity(), DetailMatchView {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         toolbar.setNavigationOnClickListener { onBackPressed() }
+
         database.onCreate(database.writableDatabase)
 
         presenter = DetailMatchPresenter(this)
@@ -65,7 +63,9 @@ class DetailMatchActivity : AppCompatActivity(), DetailMatchView {
                         event = response?.events?.get(0)!!
 
                         supportActionBar?.title = event.strEvent
-                        tvDateMatch.text = toDateIndo(event.strDate!!,"dd/MM/yy")
+//                        tvDateMatch.text = toDateIndo(event.strDate!!,"dd/MM/yy")
+                        tvDateMatch.text = toDateIndo(event.dateEvent!!,"yyyy-MM-dd")
+                        tvHourMatch.text = toHourIndo(event.strTime!!)
 
                         tvSubstitutesHome.text = event.strHomeLineupSubstitutes?.toString()?.replace("; ","\n")?.replace(";","")
                         tvForwardHome.text = event.strHomeLineupForward?.toString()?.replace("; ","\n")?.replace(";","")
@@ -115,10 +115,10 @@ class DetailMatchActivity : AppCompatActivity(), DetailMatchView {
 
     override fun checkFavorite(event: Event) {
         database.use {
-            val result = select(Favorite.TABLE_FAVORITE)
+            val result = select(FavoriteMatch.TABLE_FAVORITE_MATCH)
                     .whereArgs("(eventId = {eventId})",
-                            Favorite.EVENT_ID to event.idEvent.toString())
-            val favorite = result.parseList(classParser<Favorite>())
+                            FavoriteMatch.EVENT_ID to event.idEvent.toString())
+            val favorite = result.parseList(classParser<FavoriteMatch>())
             if (!favorite.isEmpty()) isFavorite = true
         }
     }
@@ -134,14 +134,14 @@ class DetailMatchActivity : AppCompatActivity(), DetailMatchView {
     override fun addToFavorite(event: Event){
         try {
             database.use {
-                insert(Favorite.TABLE_FAVORITE,
-                        Favorite.ID to null,
-                        Favorite.EVENT_ID to event.idEvent,
-                        Favorite.AWAY_SCORE to event.intAwayScore.toString(),
-                        Favorite.DATE_MATCH to event.strDate,
-                        Favorite.HOME_NAME to event.strHomeTeam,
-                        Favorite.HOME_SCORE to event.intHomeScore.toString(),
-                        Favorite.AWAY_NAME to event.strAwayTeam
+                insert(FavoriteMatch.TABLE_FAVORITE_MATCH,
+                        FavoriteMatch.ID to null,
+                        FavoriteMatch.EVENT_ID to event.idEvent,
+                        FavoriteMatch.AWAY_SCORE to event.intAwayScore.toString(),
+                        FavoriteMatch.DATE_MATCH to event.dateEvent,
+                        FavoriteMatch.HOME_NAME to event.strHomeTeam,
+                        FavoriteMatch.HOME_SCORE to event.intHomeScore.toString(),
+                        FavoriteMatch.AWAY_NAME to event.strAwayTeam
                 )
             }
             snackbar(swipeRefresh, "Added to favorite").show()
@@ -156,7 +156,7 @@ class DetailMatchActivity : AppCompatActivity(), DetailMatchView {
     override fun removeFromFavorite(event: Event) = try {
         database.use {
             delete(
-                    Favorite.TABLE_FAVORITE, "(eventId = {eventId})",Favorite.EVENT_ID to event.idEvent.toString()
+                    FavoriteMatch.TABLE_FAVORITE_MATCH, "(eventId = {eventId})",FavoriteMatch.EVENT_ID to event.idEvent.toString()
             )
         }
         snackbar(swipeRefresh, "Removed to favorite").show()
