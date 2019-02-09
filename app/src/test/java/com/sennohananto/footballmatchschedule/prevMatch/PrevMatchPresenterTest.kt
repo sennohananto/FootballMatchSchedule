@@ -4,6 +4,8 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
+import com.sennohananto.footballmatchschedule.matches.prevMatch.PrevMatchPresenter
+import com.sennohananto.footballmatchschedule.matches.prevMatch.PrevMatchView
 import com.sennohananto.footballmatchschedule.model.Match
 import org.junit.Assert
 import org.junit.Before

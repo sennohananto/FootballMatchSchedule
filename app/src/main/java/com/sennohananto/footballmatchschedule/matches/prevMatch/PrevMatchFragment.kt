@@ -1,4 +1,4 @@
-package com.sennohananto.footballmatchschedule.prevMatch
+package com.sennohananto.footballmatchschedule.matches.prevMatch
 
 
 import android.os.Bundle
@@ -7,12 +7,14 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.sennohananto.footballmatchschedule.MainActivity
 import com.sennohananto.footballmatchschedule.R
 import com.sennohananto.footballmatchschedule.adapter.MatchAdapter
-import com.sennohananto.footballmatchschedule.detailMatch.DetailMatchActivity
-import com.sennohananto.footballmatchschedule.invisible
+import com.sennohananto.footballmatchschedule.matches.detailMatch.DetailMatchActivity
+import com.sennohananto.footballmatchschedule.dismissProgressDialog
+import com.sennohananto.footballmatchschedule.matches.PrevMatchCallback
 import com.sennohananto.footballmatchschedule.model.Event
-import com.sennohananto.footballmatchschedule.visible
+import com.sennohananto.footballmatchschedule.showProgressDialog
 import kotlinx.android.synthetic.main.fragment_prev_match.*
 import org.jetbrains.anko.support.v4.startActivity
 
@@ -21,45 +23,44 @@ import org.jetbrains.anko.support.v4.startActivity
  * A simple [Fragment] subclass.
  *
  */
-class PrevMatchFragment : Fragment(), PrevMatchView {
+class PrevMatchFragment : Fragment(), PrevMatchView, PrevMatchCallback {
+    override fun loadPrevMatches(idLeague: String) {
+        presenter.getTeamList(idLeague)
+    }
 
-    private lateinit var presenter: PrevMatchPresenter
-    private lateinit var adapter: MatchAdapter
+    val presenter: PrevMatchPresenter = PrevMatchPresenter(this)
+    lateinit var adapter: MatchAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val v = inflater.inflate(R.layout.fragment_prev_match, container, false)
-        presenter = PrevMatchPresenter(this)
-        return v
+        return inflater.inflate(R.layout.fragment_prev_match, container, false)
     }
 
-    override fun onResume() {
-        super.onResume()
-//        Log.d("UUID","UUID Sekarang : "+ UUID.randomUUID().toString())
-
-
-
-        recvPrevMatch.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-        presenter.getTeamList("https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=4328")
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recvPrevMatch.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+        (activity as MainActivity).setOnPrevMatchRefreshListener(this)
     }
 
     override fun showPrevMatchList(data: List<Event>?) {
-        adapter = MatchAdapter(data!!) {
+        adapter = MatchAdapter(data!!,"prev") {
             startActivity<DetailMatchActivity>(
                     "idEvent" to it.idEvent
             )
         }
-        recvPrevMatch.adapter = adapter
+
+        try {
+            recvPrevMatch.adapter = adapter
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
     }
 
     override fun showLoading() {
-        progressBar.visible()
+        showProgressDialog(context!!,"Loading Matches")
     }
 
     override fun hideLoading() {
-        progressBar.invisible()
+        dismissProgressDialog()
     }
-
-
 }

@@ -1,27 +1,28 @@
-package com.sennohananto.footballmatchschedule.team.searchTeam
+package com.sennohananto.footballmatchschedule.team.teamDetail
 
-import com.androidnetworking.AndroidNetworking
-import com.androidnetworking.common.Priority
-import com.androidnetworking.error.ANError
-import com.androidnetworking.interfaces.ParsedRequestListener
-import com.sennohananto.footballmatchschedule.model.TeamResponse
+import com.sennohananto.footballmatchschedule.model.Team
 
-class SearchTeamPresenter(private val view: SearchTeamView){
-    fun querySearch(keyWord:String){
+class TeamDetailPresenter(private val view: TeamDetailView){
+    fun loadData(team:Team){
         view.showLoading()
-        AndroidNetworking.get("https://www.thesportsdb.com/api/v1/json/1/searchteams.php")
-                .addQueryParameter("t",keyWord)
-                .setPriority(Priority.HIGH)
-                .build()
-                .getAsObject(TeamResponse::class.java, object : ParsedRequestListener<TeamResponse> {
-                    override fun onResponse(response: TeamResponse?) {
-                        view.loadSearchResult(response!!)
-                        view.hideLoading()
-                    }
+        view.loadTeamBadge(team.strTeamBadge!!)
+        view.loadTeamName(team.strTeam!!)
+        view.loadTeamYear(team.intFormedYear!!)
+        view.loadTeamStadion(team.strStadium!!)
+        view.hideLoading()
+    }
 
-                    override fun onError(anError: ANError?) {
-                        view.hideLoading()
-                    }
-                })
+    fun addToFavorites(team: Team){
+        view.addToFavorite(team)
+    }
+
+
+
+    fun removeFavorites(team: Team){
+        view.removeFromFavorite(team)
+    }
+
+    fun setFavorite(){
+        view.setFavorite()
     }
 }

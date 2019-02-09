@@ -1,4 +1,4 @@
-package com.sennohananto.footballmatchschedule.nextMatch
+package com.sennohananto.footballmatchschedule.matches.nextMatch
 
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
@@ -7,10 +7,11 @@ import com.androidnetworking.interfaces.ParsedRequestListener
 import com.sennohananto.footballmatchschedule.model.Match
 
 class NextMatchPresenter(private val view: NextMatchView){
-    fun getTeamList(url:String){
+    fun getTeamList(idLeague:String){
         view.showLoading()
-        AndroidNetworking.get(url)
+        AndroidNetworking.get("https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?")
                 .setPriority(Priority.HIGH)
+                .addQueryParameter("id",idLeague)
                 .build()
                 .getAsObject(Match::class.java, object : ParsedRequestListener<Match> {
                     override fun onResponse(response: Match?) {

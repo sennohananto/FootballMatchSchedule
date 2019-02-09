@@ -1,7 +1,7 @@
-package com.sennohananto.footballmatchschedule.team.teamDetail.players
+package com.sennohananto.footballmatchschedule.team.teamDetail.players.playerDetail
 
-interface PlayersView{
-    fun showPlayers(players:Players)
-    fun showLoading()
-    fun hideLoading()
+import com.sennohananto.footballmatchschedule.team.teamDetail.players.Player
+
+interface PlayerDetailView{
+    fun showPlayers(player: Player)
 }

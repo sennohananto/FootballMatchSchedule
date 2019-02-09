@@ -1,4 +1,4 @@
-package com.sennohananto.footballmatchschedule.detailMatch
+package com.sennohananto.footballmatchschedule.matches.detailMatch
 
 import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
@@ -141,10 +141,11 @@ class DetailMatchActivity : AppCompatActivity(), DetailMatchView {
                         FavoriteMatch.DATE_MATCH to event.dateEvent,
                         FavoriteMatch.HOME_NAME to event.strHomeTeam,
                         FavoriteMatch.HOME_SCORE to event.intHomeScore.toString(),
-                        FavoriteMatch.AWAY_NAME to event.strAwayTeam
+                        FavoriteMatch.AWAY_NAME to event.strAwayTeam,
+                        FavoriteMatch.STR_TIME to event.strTime.toString()
                 )
             }
-            snackbar(swipeRefresh, "Added to favorite").show()
+            snackbar(swipeRefresh, "Added to favorite match").show()
         } catch (e: SQLiteConstraintException){
             snackbar(swipeRefresh, e.localizedMessage).show()
         }

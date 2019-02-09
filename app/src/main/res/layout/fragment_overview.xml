@@ -3,12 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".team.teamDetail.OverviewFragment">
+    tools:context=".team.teamDetail.overview.OverviewFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--<WebView-->
+        <!--android:layout_margin="8dp"-->
+        <!--android:id="@+id/webView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+    <WebView
+        android:layout_margin="8dp"
+        android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+        android:layout_height="match_parent" />
 </FrameLayout>

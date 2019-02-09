@@ -1,49 +1,41 @@
 package com.sennohananto.footballmatchschedule.adapter
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.sennohananto.footballmatchschedule.R
-import com.sennohananto.footballmatchschedule.database.FavoriteMatch
-import com.sennohananto.footballmatchschedule.toDateIndo
+import com.sennohananto.footballmatchschedule.database.FavoriteTeam
 import org.jetbrains.anko.find
 
-class FavoriteAdapter (private val favoriteMatches: List<FavoriteMatch>, private val listener: (FavoriteMatch) -> Unit) : RecyclerView.Adapter<ViewHolderFavorite>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderFavorite {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.match_row, parent, false)
-        return ViewHolderFavorite(view)
+class FavoriteTeamAdapter (private val favoriteTeams: List<FavoriteTeam>, private val listener: (FavoriteTeam) -> Unit) : RecyclerView.Adapter<ViewHolderFavoriteTeam>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderFavoriteTeam {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.team_row, parent, false)
+        return ViewHolderFavoriteTeam(view)
     }
 
     override fun getItemCount(): Int {
-        return favoriteMatches.size
+        return favoriteTeams.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolderFavorite, position: Int) {
-        holder.bindItem(favoriteMatches[position],listener)
+    override fun onBindViewHolder(holderTeam: ViewHolderFavoriteTeam, position: Int) {
+        holderTeam.bindItem(holderTeam.itemView.context,favoriteTeams[position],listener)
     }
 }
 
-class ViewHolderFavorite(view: View) : RecyclerView.ViewHolder(view){
-    private val tvTanggal: TextView = view.find(R.id.tvDateMatch)
-    private val tvTimKiri: TextView = view.find(R.id.tvTeamHome)
-    private val tvSkorKiri: TextView = view.find(R.id.tvScoreHome)
-    private val tvTimKanan: TextView = view.find(R.id.tvTeamAway)
-    private val tvSkorKanan: TextView = view.find(R.id.tvScoreAway)
+class ViewHolderFavoriteTeam(view: View) : RecyclerView.ViewHolder(view){
+    private val imgTeam: ImageView = view.find(R.id.imgTeam)
+    private val tvTeamName: TextView = view.find(R.id.tvTeamName)
 
-    fun bindItem(favoriteMatch: FavoriteMatch, listener: (FavoriteMatch) -> Unit){
-//        tvTanggal.text = toDateIndo(favoriteMatch.dateMatch!!,"dd/MM/yy")
-        tvTanggal.text = toDateIndo(favoriteMatch.dateMatch!!,"yyyy-MM-dd")
-        tvTimKiri.text = favoriteMatch.homeName
-        tvTimKanan.text = favoriteMatch.awayName
-        if(!favoriteMatch.awayScore.equals("null")){
-            tvSkorKiri.text = favoriteMatch.homeScore
-            tvSkorKanan.text = favoriteMatch.awayScore
-        }
-
+    fun bindItem(context: Context, favoriteTeam: FavoriteTeam, listener: (FavoriteTeam) -> Unit){
+        Glide.with(context).load(favoriteTeam.strTeamBadge).into(imgTeam)
+        tvTeamName.text = favoriteTeam.strTeam
         itemView.setOnClickListener {
-            listener(favoriteMatch)
+            listener(favoriteTeam)
         }
     }
 }

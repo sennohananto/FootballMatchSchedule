@@ -1,10 +1,10 @@
-package com.sennohananto.footballmatchschedule.matches.searchMatch
+package com.sennohananto.footballmatchschedule.team.searchTeam
 
-import com.sennohananto.footballmatchschedule.model.SearchResultMatch
+import com.sennohananto.footballmatchschedule.model.TeamResponse
 
-interface SearchMatchView{
+interface SearchTeamView{
     fun querySearch(keyword: String)
-    fun loadSearchResult(result:SearchResultMatch)
+    fun loadSearchResult(result:TeamResponse)
     fun showLoading()
     fun hideLoading()
 }

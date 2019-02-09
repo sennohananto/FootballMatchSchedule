@@ -1,27 +1,21 @@
-package com.sennohananto.footballmatchschedule.matches.searchMatch
+package com.sennohananto.footballmatchschedule.team.searchTeam
 
-import android.util.Log
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
-import com.sennohananto.footballmatchschedule.model.SearchResultMatch
+import com.sennohananto.footballmatchschedule.model.TeamResponse
 
-class SearchMatchPresenter(private val view: SearchMatchView){
+class SearchTeamPresenter(private val view: SearchTeamView){
     fun querySearch(keyWord:String){
         view.showLoading()
-        AndroidNetworking.get("https://www.thesportsdb.com/api/v1/json/1/searchevents.php")
-                .addQueryParameter("e",keyWord)
+        AndroidNetworking.get("https://www.thesportsdb.com/api/v1/json/1/searchteams.php")
+                .addQueryParameter("t",keyWord)
                 .setPriority(Priority.HIGH)
                 .build()
-                .getAsObject(SearchResultMatch::class.java, object : ParsedRequestListener<SearchResultMatch> {
-                    override fun onResponse(response: SearchResultMatch?) {
-                        if(response?.event?.size!!>0){
-                            view.loadSearchResult(response!!)
-                        }else{
-                            Log.d("API", "Response NULL")
-                        }
-
+                .getAsObject(TeamResponse::class.java, object : ParsedRequestListener<TeamResponse> {
+                    override fun onResponse(response: TeamResponse?) {
+                        view.loadSearchResult(response!!)
                         view.hideLoading()
                     }
 

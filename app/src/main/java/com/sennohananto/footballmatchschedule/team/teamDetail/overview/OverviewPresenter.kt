@@ -1,16 +1,7 @@
-package com.sennohananto.footballmatchschedule.team.teamDetail
+package com.sennohananto.footballmatchschedule.team.teamDetail.overview
 
-import com.sennohananto.footballmatchschedule.model.Team
-
-class TeamDetailPresenter(private val view: TeamDetailView){
-    fun loadData(team:Team){
-        view.showLoading()
-        view.loadOverview(team.strDescriptionEN!!)
-        view.loadPlayers(team.idTeam!!)
-        view.loadTeamBadge(team.strTeamBadge!!)
-        view.loadTeamName(team.strTeam!!)
-        view.loadTeamYear(team.intFormedYear!!)
-        view.loadTeamStadion(team.strStadium!!)
-        view.hideLoading()
+class OverviewPresenter(private val view: OverviewView){
+    fun loadOverview(overview:String){
+        view.loadOverview(overview)
     }
 }

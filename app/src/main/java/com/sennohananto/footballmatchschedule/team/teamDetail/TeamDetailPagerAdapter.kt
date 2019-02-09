@@ -1,13 +1,13 @@
-package com.sennohananto.footballmatchschedule.matches
+package com.sennohananto.footballmatchschedule.team.teamDetail
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.sennohananto.footballmatchschedule.matches.nextMatch.NextMatchFragment
-import com.sennohananto.footballmatchschedule.matches.prevMatch.PrevMatchFragment
+import com.sennohananto.footballmatchschedule.team.teamDetail.overview.OverviewFragment
+import com.sennohananto.footballmatchschedule.team.teamDetail.players.PlayersFragment
 
 
-class MatchesPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
+class TeamDetailPagerAdapter(fragmentManager: FragmentManager, val overviewFragment: OverviewFragment, val playersFragment: PlayersFragment) : FragmentStatePagerAdapter(fragmentManager) {
 
     private var tabCount = 2
 
@@ -17,8 +17,8 @@ class MatchesPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePager
 
     override fun getItem(position: Int): Fragment? {
         return when (position) {
-            0 -> PrevMatchFragment()
-            1 -> NextMatchFragment()
+            0 -> overviewFragment
+            1 -> playersFragment
             else -> null
         }
     }

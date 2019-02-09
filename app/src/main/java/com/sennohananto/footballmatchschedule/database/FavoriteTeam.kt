@@ -1,22 +1,24 @@
 package com.sennohananto.footballmatchschedule.database
 
-class FavoriteMatch(val id: Long?,
-                    val eventId: String?,
-                    val awayScore: String?,
-                    val dateMatch: String?,
-                    val homeName: String?,
-                    val homeScore: String?,
-                    val awayName: String?
-) {
-
+class FavoriteTeam(
+        val id: Long?,
+        var idTeam: String?,
+        var strTeam: String?,
+        var intFormedYear: String?,
+        var idLeague: String,
+        var strStadium: String?,
+        var strDescriptionEN: String?,
+        var strTeamBadge: String?
+){
     companion object {
-        const val TABLE_FAVORITE_MATCH: String = "table_favorite"
+        const val TABLE_FAVORITE_TEAM: String = "table_favorite_teams"
         const val ID: String = "id"
-        const val EVENT_ID: String = "eventId"
-        const val AWAY_SCORE: String = "awayScore"
-        const val DATE_MATCH: String = "dateMatch"
-        const val HOME_NAME: String = "homeName"
-        const val HOME_SCORE: String = "homeScore"
-        const val AWAY_NAME: String = "awayName"
+        const val ID_TEAM: String = "idTeam"
+        const val STR_TEAM: String = "strTeam"
+        const val INT_FORMED_YEAR: String = "intFormedYear"
+        const val ID_LEAGUE: String = "idLeague"
+        const val STR_STADIUM: String = "strStadium"
+        const val STR_DESCRIPTION_EN: String = "strDescriptionEN"
+        const val STR_TEAM_BADGE: String = "strTeamBadge"
     }
 }

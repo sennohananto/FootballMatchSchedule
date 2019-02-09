@@ -1,4 +1,4 @@
-package com.sennohananto.footballmatchschedule.detailMatch
+package com.sennohananto.footballmatchschedule.matches.detailMatch
 
 import android.widget.ImageView
 import com.androidnetworking.AndroidNetworking

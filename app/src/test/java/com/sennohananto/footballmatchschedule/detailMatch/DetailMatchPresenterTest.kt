@@ -4,6 +4,8 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
+import com.sennohananto.footballmatchschedule.matches.detailMatch.DetailMatchPresenter
+import com.sennohananto.footballmatchschedule.matches.detailMatch.DetailMatchView
 import org.json.JSONObject
 import org.junit.Assert
 import org.junit.Before

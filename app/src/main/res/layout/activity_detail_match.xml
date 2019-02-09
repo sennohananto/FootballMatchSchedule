@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".detailMatch.DetailMatchActivity">
+    tools:context=".matches.detailMatch.DetailMatchActivity">
     <android.support.design.widget.AppBarLayout
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +43,14 @@
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tvHourMatch"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -161,6 +169,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvGoalHome"
                         android:layout_marginEnd="16dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -169,6 +179,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvGoalAway"
                         android:gravity="end"
                         android:layout_marginStart="16dp"
@@ -194,6 +206,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvShotsHome"
                         android:layout_marginEnd="16dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -202,6 +216,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvShotsAway"
                         android:gravity="end"
                         android:layout_marginStart="16dp"
@@ -238,6 +254,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvKeeperHome"
                         android:layout_marginEnd="16dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -246,6 +264,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvKeeperAway"
                         android:gravity="end"
                         android:layout_marginStart="16dp"
@@ -270,6 +290,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvDefenseHome"
                         android:layout_marginEnd="16dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -278,6 +300,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvDefenseAway"
                         android:gravity="end"
                         android:layout_marginStart="16dp"
@@ -294,6 +318,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+
                         android:textColor="@color/colorPrimary"
                         android:id="@+id/labelMidfield"
                         app:layout_constraintStart_toStartOf="parent"
@@ -304,6 +329,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvMidfieldHome"
                         android:layout_marginEnd="16dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -312,6 +339,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvMidfieldAway"
                         android:gravity="end"
                         android:layout_marginStart="16dp"
@@ -338,6 +367,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvForwardHome"
                         android:layout_marginEnd="16dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -346,6 +377,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvForwardAway"
                         android:gravity="end"
                         android:layout_marginStart="16dp"
@@ -372,6 +405,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvSubstitutesHome"
                         android:layout_marginEnd="16dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -380,6 +415,8 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:id="@+id/tvSubstitutesAway"
                         android:gravity="end"
                         android:layout_marginStart="16dp"

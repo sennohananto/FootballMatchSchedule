@@ -1,9 +1,9 @@
-package com.sennohananto.footballmatchschedule.favorite.favoriteMatches
+package com.sennohananto.footballmatchschedule.favorite.favoriteTeam
 
-import com.sennohananto.footballmatchschedule.database.FavoriteMatch
+import com.sennohananto.footballmatchschedule.database.FavoriteTeam
 
-interface FavoriteMatchesView {
+interface FavoriteTeamView {
     fun showLoading()
     fun hideLoading()
-    fun showFavoriteMatchesList(data: List<FavoriteMatch>?)
+    fun showFavoriteTeamList(data: List<FavoriteTeam>?)
 }

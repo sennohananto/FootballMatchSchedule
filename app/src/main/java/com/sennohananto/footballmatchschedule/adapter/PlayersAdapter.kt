@@ -8,37 +8,40 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.sennohananto.footballmatchschedule.R
-import com.sennohananto.footballmatchschedule.model.Team
+import com.sennohananto.footballmatchschedule.team.teamDetail.players.Player
 import org.jetbrains.anko.find
 
 
-class TeamAdapter (private val teams: List<Team>, private val listener: (Team) -> Unit) : RecyclerView.Adapter<ViewHolderTeam>() {
-    override fun onBindViewHolder(holder: ViewHolderTeam, position: Int) {
-        holder.bindItem(holder.itemView.context,teams[position],listener)
+class PlayersAdapter (private val players: List<Player>, private val listener: (Player) -> Unit) : RecyclerView.Adapter<ViewHolderPlayer>() {
+    override fun onBindViewHolder(holder: ViewHolderPlayer, position: Int) {
+        holder.bindItem(holder.itemView.context,players[position],listener)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderTeam {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.team_row, parent, false)
-        return ViewHolderTeam(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderPlayer {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.player_row, parent, false)
+        return ViewHolderPlayer(view)
     }
 
     override fun getItemCount(): Int {
-        return teams.size
+        return players.size
     }
-
-
 }
 
-class ViewHolderTeam(view: View) : RecyclerView.ViewHolder(view){
-    private val imgTeam: ImageView = view.find(R.id.imgTeam)
-    private val tvTeamName: TextView = view.find(R.id.tvTeamName)
+class ViewHolderPlayer(view: View) : RecyclerView.ViewHolder(view){
+    private val imgTeam: ImageView = view.find(R.id.imgPlayer)
+    private val tvPlayerName: TextView = view.find(R.id.tvPlayerName)
+    private val tvPlayerPosition: TextView = view.find(R.id.tvPlayerPosition)
 
-    fun bindItem(context: Context, team: Team, listener: (Team) -> Unit){
-        Glide.with(context).load(team.strTeamBadge).into(imgTeam)
-        tvTeamName.text = team.strTeam
+    fun bindItem(context: Context, player: Player, listener: (Player) -> Unit){
+        tvPlayerName.text = player.strPlayer
+        tvPlayerPosition.text = player.strPosition
+        Glide.with(context).load(player.strCutout)
+                .apply(RequestOptions.errorOf(R.drawable.ic_person_black_24dp))
+                .into(imgTeam)
         itemView.setOnClickListener {
-            listener(team)
+            listener(player)
         }
     }
 

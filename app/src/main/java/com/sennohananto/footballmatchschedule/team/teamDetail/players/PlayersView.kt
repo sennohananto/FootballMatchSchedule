@@ -1,5 +1,7 @@
-package com.sennohananto.footballmatchschedule.team.teamDetail.overview
+package com.sennohananto.footballmatchschedule.team.teamDetail.players
 
-interface OverviewView{
-    fun loadOverview(overview:String)
+interface PlayersView{
+    fun showPlayers(players:Players)
+    fun showLoading()
+    fun hideLoading()
 }

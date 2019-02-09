@@ -1,9 +1,5 @@
-package com.sennohananto.footballmatchschedule.favorite.favoriteMatches
+package com.sennohananto.footballmatchschedule.favorite
 
-import com.sennohananto.footballmatchschedule.database.Favorite
-
-interface FavoriteMatchesView {
-    fun showLoading()
-    fun hideLoading()
-    fun showFavoriteMatchesList(data: List<Favorite>?)
+interface FavoriteView {
+    fun setUpPagerAdapter()
 }

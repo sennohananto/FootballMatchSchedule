@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Football Match Schedule</string>
-    <string name="title_prev_match">Prev Match</string>
-    <string name="title_next_match">Next Match</string>
+    <string name="title_matches">Match</string>
+    <string name="title_team">Team</string>
     <string name="title_favorites">Favorites</string>
     <string name="favorites">Favorites</string>
     <string name="img">img</string>
@@ -15,4 +15,7 @@
     <string name="midfield">Midfield</string>
     <string name="forward">Forward</string>
     <string name="substitutes">Substitutes</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

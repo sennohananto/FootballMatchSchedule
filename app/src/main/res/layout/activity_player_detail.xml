@@ -5,5 +5,120 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".team.teamDetail.players.playerDetail.PlayerDetailActivity">
+    <android.support.design.widget.AppBarLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/swipeRefresh"
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            app:titleTextColor="#FFF"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize" />
+    </android.support.design.widget.AppBarLayout>
+    <ImageView
+        android:scaleType="centerCrop"
+        android:id="@+id/imgPlayer"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+    <LinearLayout
+        android:id="@+id/llWeightHeight"
+        android:weightSum="2"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.constraint.ConstraintLayout
+            android:padding="8dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/labelWeight"
+                android:textSize="21sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Weight (Kg)"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvPlayerWeight"
+                android:textStyle="bold"
+                android:textSize="36sp"
+                app:layout_constraintTop_toBottomOf="@id/labelWeight"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </android.support.constraint.ConstraintLayout>
+        <android.support.constraint.ConstraintLayout
+            android:padding="8dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/labelHeight"
+                android:textSize="21sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Height (m)"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvPlayerHeight"
+                android:textStyle="bold"
+                android:textSize="36sp"
+                app:layout_constraintTop_toBottomOf="@id/labelHeight"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </android.support.constraint.ConstraintLayout>
 
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvPlayerPosition"
+        app:layout_constraintTop_toBottomOf="@id/llWeightHeight"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="-"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        android:id="@+id/line"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@id/tvPlayerPosition"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <ScrollView
+        app:layout_constraintTop_toBottomOf="@id/line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <TextView
+            android:id="@+id/tvPlayerDesc"
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+    <android.support.constraint.Guideline
+        android:orientation="horizontal"
+        android:id="@+id/guideline"
+        app:layout_constraintGuide_percent=".4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </android.support.constraint.ConstraintLayout>

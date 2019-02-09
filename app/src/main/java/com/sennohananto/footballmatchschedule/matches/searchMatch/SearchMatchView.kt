@@ -1,7 +1,10 @@
-package com.sennohananto.footballmatchschedule.matches
+package com.sennohananto.footballmatchschedule.matches.searchMatch
 
-interface MatchesFragmentView{
-    fun loadListLeague(listLeague: List<League>)
+import com.sennohananto.footballmatchschedule.model.SearchResultMatch
+
+interface SearchMatchView{
+    fun querySearch(keyword: String)
+    fun loadSearchResult(result:SearchResultMatch)
     fun showLoading()
     fun hideLoading()
 }

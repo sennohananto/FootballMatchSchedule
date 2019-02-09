@@ -1,16 +1,17 @@
 package com.sennohananto.footballmatchschedule.database
 
-class Favorite(val id: Long?,
+class FavoriteMatch(val id: Long?,
                     val eventId: String?,
                     val awayScore: String?,
                     val dateMatch: String?,
                     val homeName: String?,
                     val homeScore: String?,
-                    val awayName: String?
+                    val awayName: String?,
+                    val strTime: String?
 ) {
 
     companion object {
-        const val TABLE_FAVORITE: String = "table_favorite"
+        const val TABLE_FAVORITE_MATCH: String = "table_favorite_matches"
         const val ID: String = "id"
         const val EVENT_ID: String = "eventId"
         const val AWAY_SCORE: String = "awayScore"
@@ -18,5 +19,6 @@ class Favorite(val id: Long?,
         const val HOME_NAME: String = "homeName"
         const val HOME_SCORE: String = "homeScore"
         const val AWAY_NAME: String = "awayName"
+        const val STR_TIME: String = "strTime"
     }
 }

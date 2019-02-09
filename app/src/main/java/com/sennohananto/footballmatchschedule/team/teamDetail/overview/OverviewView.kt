@@ -1,13 +1,5 @@
-package com.sennohananto.footballmatchschedule.team.teamDetail
+package com.sennohananto.footballmatchschedule.team.teamDetail.overview
 
-interface TeamDetailView{
-    fun showLoading()
-    fun hideLoading()
-    fun loadTeamBadge(url:String)
-    fun loadTeamName(teamName:String)
-    fun loadTeamYear(year:String)
-    fun loadTeamStadion(teamStadion:String)
-    fun loadOverview(overview: String)
-    fun loadPlayers(idTeam: String)
-
+interface OverviewView{
+    fun loadOverview(overview:String)
 }

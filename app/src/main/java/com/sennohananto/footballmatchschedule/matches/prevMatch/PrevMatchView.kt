@@ -1,4 +1,4 @@
-package com.sennohananto.footballmatchschedule.prevMatch
+package com.sennohananto.footballmatchschedule.matches.prevMatch
 
 import com.sennohananto.footballmatchschedule.model.Event
 
